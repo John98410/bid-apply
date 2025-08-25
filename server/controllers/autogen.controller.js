@@ -42,14 +42,26 @@ const answer = async (req, res) => {
                     body { 
                         font-family: Arial, sans-serif; 
                         padding: 25px; 
-                        font-size: 11px; 
+                        font-size: 12px; 
                         line-height: 1.6; 
                         margin: 0; 
                     }
 
-                    h1, h2, h3 { 
-                        color: #333; 
+                    h1 {
+                        text-align: center; 
+                        color: #48175dff; 
+                        margin-bottom: 20px;
+                        page-break-after: avoid;}
+
+                     h2 { 
+                        color: #2f2f2fff; 
                         page-break-after: avoid; 
+                        text-align :center;
+                    }
+                    h3 { 
+                        color: #4a4a4aff; 
+                        page-break-after: avoid; 
+                        text-align :center;
                     }
 
                     pre { 
