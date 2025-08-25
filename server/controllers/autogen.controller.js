@@ -6,24 +6,26 @@ const openai = new OpenAI({
 });
 
 const answer = (req, res) => {
-    // const { prompt } = req.body;
 
-    // openai.chat.completions.create({
-    //     model: 'gpt-4',
-    //     messages: [{ role: 'user', content: prompt }],
-    // }).then((response) => {
-    //     res.json({ answer: response.choices[0].message.content });
-    // }).catch((error) => {
-    //     res.status(500).json({ error: error.message });
-    // });
+    const { jobTitle,
+        jobDescription,
+        note
+    } = req.body;
 
-    const input = req.body.input;;
+    const sentence1 = `I want to apply for the job titled "${jobTitle}".
+    The job description is as follows: ${jobDescription}
+    Here is a note about me that might be useful: ${note}`;
+
+    console.log(sentence1)
     openai.responses.create({
         model: "gpt-5",
-        input: input
+        input: sentence1
     }).then((response) => {
+        console.log(response);
         res.json({ answer: response.output_text });
+        
     }).catch((error) => {
+        console.error('Error communicating with OpenAI:', error);
         res.status(500).json({ error: error.message });
     });
 }

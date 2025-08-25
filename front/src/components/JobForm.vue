@@ -1,54 +1,76 @@
 <template>
   <form class="card" @submit.prevent="onSubmit">
-    <h2>Applicant</h2>
     <div class="grid">
       <div class="field">
-        <label for="name">Full Name</label>
+        <label for="title">Job Title</label>
         <input
-          id="name"
-          v-model.trim="form.name"
+          id="title"
+          v-model.trim="form.title"
           type="text"
-          placeholder="Jane Doe"
+          placeholder="Frontend Engineer"
           :disabled="loading"
         />
-        <small v-if="errors.name" class="err">{{ errors.name }}</small>
+        <small v-if="errors.title" class="err">{{ errors.title }}</small>
       </div>
+
       <div class="field">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          v-model.trim="form.email"
-          type="email"
-          placeholder="jane@example.com"
+        <label for="description">Job Description</label>
+        <textarea
+          id="description"
+          v-model.trim="form.description"
+          rows="6"
+          placeholder="Paste the JD here..."
           :disabled="loading"
-        />
-        <small v-if="errors.email" class="err">{{ errors.email }}</small>
+        ></textarea>
+        <small v-if="errors.description" class="err">{{ errors.description }}</small>
       </div>
-      <div class="field">
-        <label for="phone">Phone</label>
-        <input
-          id="phone"
-          v-model.trim="form.phone"
-          type="tel"
-          placeholder="+1 555 123 4567"
-          :disabled="loading"
-        />
-        <small v-if="errors.phone" class="err">{{ errors.phone }}</small>
+      <div class="grid-form">
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input
+            id="name"
+            v-model.trim="form.name"
+            type="text"
+            placeholder="Jane Doe"
+            :disabled="loading"
+          />
+          <small v-if="errors.name" class="err">{{ errors.name }}</small>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            v-model.trim="form.email"
+            type="email"
+            placeholder="jane@example.com"
+            :disabled="loading"
+          />
+          <small v-if="errors.email" class="err">{{ errors.email }}</small>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input
+            id="phone"
+            v-model.trim="form.phone"
+            type="tel"
+            placeholder="+1 555 123 4567"
+            :disabled="loading"
+          />
+          <small v-if="errors.phone" class="err">{{ errors.phone }}</small>
+        </div>
+
+        <div class="field">
+          <label for="address">Address</label>
+          <input
+            id="address"
+            v-model.trim="form.address"
+            type="text"
+            placeholder="123 Main St, City, ST 12345"
+            :disabled="loading"
+          />
+        </div>
       </div>
     </div>
-
-    <div class="field">
-      <label for="address">Address</label>
-      <input
-        id="address"
-        v-model.trim="form.address"
-        type="text"
-        placeholder="123 Main St, City, ST 12345"
-        :disabled="loading"
-      />
-    </div>
-
-    <h2>Education</h2>
     <div class="field">
       <label for="education">Education</label>
       <textarea
@@ -60,7 +82,6 @@
       ></textarea>
     </div>
 
-    <h2>Experience</h2>
     <div class="field">
       <label for="experience">Experience</label>
       <textarea
@@ -70,31 +91,6 @@
         placeholder="Enter work experience"
         :disabled="loading"
       ></textarea>
-    </div>
-
-    <h2>Job</h2>
-    <div class="field">
-      <label for="title">Job Title</label>
-      <input
-        id="title"
-        v-model.trim="form.title"
-        type="text"
-        placeholder="Frontend Engineer"
-        :disabled="loading"
-      />
-      <small v-if="errors.title" class="err">{{ errors.title }}</small>
-    </div>
-
-    <div class="field">
-      <label for="description">Job Description</label>
-      <textarea
-        id="description"
-        v-model.trim="form.description"
-        rows="6"
-        placeholder="Paste the JD here..."
-        :disabled="loading"
-      ></textarea>
-      <small v-if="errors.description" class="err">{{ errors.description }}</small>
     </div>
 
     <div class="field">
@@ -267,13 +263,10 @@ button.ghost {
   color: #b91c1c;
   margin-top: 0.75rem;
 }
-
-h2 {
-  margin: 1rem 0 0.5rem;
-}
-.grid {
+.grid-form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr auto; /* 3 equal inputs + button */
+  gap: 0.5rem;
+  align-items: center;
 }
 </style>
