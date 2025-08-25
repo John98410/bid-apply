@@ -63,6 +63,11 @@ const answer = async (req, res) => {
                         page-break-after: avoid; 
                         text-align :center;
                     }
+                    h4 { 
+                        color: #d08181ff; 
+                        page-break-after: avoid; 
+                        text-align :center;
+                    }
 
                     pre { 
                         background: #f4f4f4; 
