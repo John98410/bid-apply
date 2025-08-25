@@ -195,7 +195,7 @@ async function onSubmit() {
       job: { title: form.title, description: form.description },
       note: form.note,
     };
-    const res = await postJSON("/api/jobs", payload);
+    const res = await postJSON("/api/autogen/answer", payload);
     server.success = true;
     server.message = res?.message || "Submitted successfully.";
     reset();

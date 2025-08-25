@@ -1,20 +1,21 @@
 export async function postJSON(url, data) {
-    const res = await fetch(url, {
+    fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
-    })
-    if (!res.ok) {
-        let message = `Request failed with ${res.status}`
-        try {
-            const err = await res.json()
-            message = err?.error || err?.message || message
-        } catch (_) { }
-        throw new Error(message)
-    }
-    try {
-        return await res.json()
-    } catch (_) {
-        return { message: 'OK' }
-    }
+    }).then(res => res.blob())
+        .then(async (blob) => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'resume.pdf';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(err => {
+            let message = `Request failed with ${blob.status}`
+            throw new Error(message)
+        });
 }
