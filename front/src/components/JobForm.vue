@@ -95,13 +95,14 @@
 
     <div class="field">
       <label for="note">Notes</label>
-      <input
+      <textarea
         id="note"
         v-model.trim="form.note"
         type="text"
         placeholder="Any extra note"
         :disabled="loading"
-      />
+        rows="4"
+      ></textarea>
       <small v-if="errors.note" class="err">{{ errors.note }}</small>
     </div>
 
