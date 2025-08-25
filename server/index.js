@@ -3,12 +3,15 @@ require('dotenv').config({ path: ['.env.local', '.env'] });
 const express = require('express');
 const app = express();  
 
+
 console.log(process.env.PORT);
 const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
+
+app.use(express.static('dist')); // Serve static files
 
 // Sample route
 
