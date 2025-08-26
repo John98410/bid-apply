@@ -16,7 +16,7 @@ const answer = async (req, res) => {
      render the resume in markdown format, use appropriate markdown syntax for headings, lists, and emphasis.
     I want to make a resume to apply for the job titled "${title}".
     The job description is as follows: ${description}
-    Here is a note about me that might be useful: ${note}
+    Here is a note about resume : ${note}
     ${name ? `name is ` + name : ""}, 
     ${email ? `email is ` + email : ""}, 
     ${phone ? `phone is ` + phone : ""}, 
