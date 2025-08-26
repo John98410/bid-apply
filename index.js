@@ -1,23 +1,23 @@
-require('dotenv').config({ path: ['.env.local', '.env'] });
-
 const express = require('express');
-const app = express();  
+const path = require('path');
+const app = express();
+require('dotenv').config(); // Loads .env
 
 const PORT = process.env.PORT || 80;
-
 // Middleware
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
-
-app.use(express.static('dist')); // Serve static files
-
-// Sample route
-
 app.use('/api', require('./routers')); // Use the routers
 
-console.log('API Key:', process.env.OPENAI_API_KEY);    
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+console.log('API Key:', process.env.OPENAI_API_KEY ? process.env.OPENAI_API_KEY : "Not API Key");
 
 // Start server
-app.listen("0.0.0.0", PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
