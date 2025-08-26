@@ -4,7 +4,7 @@
   "description": "GPT service for resume auto generation.",
   "main": "index.js",
   "scripts": {
-    "start" : "node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "express": "^5.1.0",
     "markdown-it": "^14.1.0",
     "openai": "^5.15.0",
+    "path-to-regexp": "^8.2.0",
     "puppeteer": "^24.17.0"
   }
 }
