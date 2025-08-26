@@ -13,9 +13,9 @@ app.use('/api', require('./routers')); // Use the routers
 app.use(express.static(path.join(__dirname, 'build')));
 
 // 3️⃣ SPA catch-all
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 // Sample route
 
 
